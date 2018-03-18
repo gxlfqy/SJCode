@@ -96,6 +96,8 @@ public:
 			return false;
 	}
 	void LinkedList::reverse();
+	//删除升序排列的链表元素中相同的元素
+	void ClearSameElementInAscendSortList(bool(*equal)(T d1, T d2));
 
 };
 
@@ -122,6 +124,32 @@ void LinkedList<T>::reverse()
 		r = n;
 	}
 	m_head = p;
+}
+
+template<typename T>
+void LinkedList<T>::ClearSameElementInAscendSortList(bool(*equal)(T d1, T d2))
+{
+	//如果链表为空, 退出
+	if (nullptr == m_head || nullptr == m_head->next)
+		return;
+
+	pnode p = m_head, r = m_head;
+	while (nullptr != r && nullptr != r->next)
+	{
+		r = r->next;
+		if (equal(p->data, r->data))
+		{
+			p->next = r->next;
+			r->next = nullptr;
+			delete r;
+			r = p->next;
+			--m_length;
+		}
+		else
+			p = r;
+
+	}
+	m_rear = nullptr != r ? r : p;
 }
 
 #endif // __LINKEDLIST_H_INCLUDED__
