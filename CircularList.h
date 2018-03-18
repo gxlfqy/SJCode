@@ -1,7 +1,7 @@
 #ifndef __CIRCULARLIST_H_INCLUDED__
 #define __CIRCULARLIST_H_INCLUDED__
 
-//虽然LinkedList中觉得不是很好, 但是我认为这种结构能包含更多的信息, 所以我还是使用了
+//虽然LinkedList中使用通用节点觉得不是很好, 但是我认为这种结构能包含更多的信息, 所以我还是使用了
 template<typename T>
 class CircularList
 {
