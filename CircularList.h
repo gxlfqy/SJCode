@@ -16,12 +16,13 @@ protected:
 	}*pnode;
 	pnode m_rear;			//尾指针
 	int m_length;			//节点个数
+	//释放节点p(包括节点p)之后的节点, 直到尾节点
 	void free(pnode p)
 	{
 		//使用递归依次释放节点所申请的空间
 		if (nullptr != p)
 		{
-			if (m_rear != p->next)
+			if (m_rear != p)
 				free(p->next);
 			p->next = nullptr;
 			delete p;
@@ -80,7 +81,7 @@ public:
 	}
 	void reset()
 	{
-		free(m_rear);
+		free(m_rear->next);
 		m_rear = nullptr;
 		m_length = 0;
 	}
@@ -134,4 +135,4 @@ public:
 
 };
 
-#endif
+#endif 
