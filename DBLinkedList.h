@@ -65,7 +65,7 @@ public:
 	bool isSymmetry(bool(*equal)(T d1, T d2))
 	{
 		//如果该表是空表, 返回false
-		if(nullptr == m_head)
+		if (nullptr == m_head || nullptr == m_head->next)
 			return false;
 		pnode left = m_head, right = m_rear;
 		int i;
