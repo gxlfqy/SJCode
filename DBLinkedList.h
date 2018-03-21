@@ -40,8 +40,12 @@ public:
 	}
 	void reset()
 	{
-		free(m_head);
-		m_head = m_rear = nullptr;
+		if (nullptr != m_head)
+		{
+			free(m_head);
+			m_head = nullptr;
+		}
+		m_rear = nullptr;
 		m_length = 0;
 	}
 	bool add(T data)

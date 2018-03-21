@@ -42,8 +42,11 @@ public:
 	}
 	void reset()
 	{
-		free(m_rear->next);
-		m_rear = nullptr;
+		if (nullptr != m_rear)
+		{
+			free(m_rear->next);
+			m_rear = nullptr;
+		}
 		m_length = 0;
 	}
 	bool add(std::string data)
